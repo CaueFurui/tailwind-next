@@ -2,7 +2,7 @@
 
 import { useFileInput } from './Root'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { FileItem } from '@/components/FileItem'
+import { FileItem } from '@/components/Form/FileInput/FileItem'
 
 export function FileList() {
   const { files } = useFileInput()
