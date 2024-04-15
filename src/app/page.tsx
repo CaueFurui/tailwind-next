@@ -1,18 +1,51 @@
+'use client'
+
 import { SettingsTabs } from '@/components/SettingsTabs'
 import * as Input from '@/components/Input'
-import { Bold, Italic, Link, List, ListOrdered, Mail } from 'lucide-react'
+import {
+  Bold,
+  Italic,
+  Link,
+  List,
+  ListOrdered,
+  Mail,
+  Moon,
+  Sun,
+} from 'lucide-react'
 import * as FileInput from '@/components/Form/FileInput'
 import { Select } from '@/components/Form/Select'
 import { SelectItem } from '@/components/Form/Select/SelectItem'
 import { TextArea } from '@/components/Form/TextArea'
 import { Button } from '@/components/Button'
+import { useTheme } from 'next-themes'
 
 export default function Home() {
+  const { _, setTheme } = useTheme()
+
   return (
     <>
-      <h1 className="text-3xl font-medium text-zinc-900 dark:text-zinc-100">
-        Settings
-      </h1>
+      <div className="flex justify-between">
+        <h1 className="text-3xl font-medium text-zinc-900 dark:text-zinc-100">
+          Settings
+        </h1>
+        <div className="flex gap-3">
+          <Button variant="ghost" onClick={() => setTheme('light')}>
+            <Sun />
+          </Button>
+          <Button variant="ghost" onClick={() => setTheme('dark')}>
+            <Moon />
+          </Button>
+          <Button variant="ghost" onClick={() => console.log('sds')}>
+            <span className="text-3xl">🇧🇷</span>
+          </Button>
+          <Button variant="ghost" onClick={() => console.log('sds')}>
+            <span className="text-3xl">🇪🇸</span>
+          </Button>
+          <Button variant="ghost" onClick={() => console.log('sds')}>
+            <span className="text-3xl">🇺🇸</span>
+          </Button>
+        </div>
+      </div>
       <SettingsTabs />
 
       <div className="mt-6 flex flex-col">
