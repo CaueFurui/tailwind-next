@@ -20,7 +20,7 @@ import { Button } from '@/components/Button'
 import { useTheme } from 'next-themes'
 
 export default function Home() {
-  const { _, setTheme } = useTheme()
+  const { setTheme } = useTheme()
 
   return (
     <>
