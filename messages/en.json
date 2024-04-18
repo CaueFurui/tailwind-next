@@ -1,0 +1,83 @@
+
+{
+  "Settings": {
+    "header": {
+      "title": "Settings"
+    },
+    "personalInfo": {
+      "title": "Personal info",
+      "description": "Update your photo and personal info here."
+    },
+    "tabs": {
+      "tab1": "Details",
+      "tab2": "Profile",
+      "tab3": "Password",
+      "tab4": "Team",
+      "tab5": "Plan",
+      "tab6": "Billings",
+      "tab7": "Email",
+      "tab8": "Notifications",
+      "tab9": "Integrations",
+      "tab10": "API"
+    },
+    "settingsForm": {
+      "name": "Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "photo": {
+        "title": "Your photo",
+        "description": "This photo will be shown on your profile."
+      },
+      "role": "Role",
+      "country": {
+        "title": "Country",
+        "placeholder": "Select a country..."
+      },
+      "timezone": {
+        "title": "Timezone",
+        "placeholder": "Select a timezone..."
+      },
+      "bio": {
+        "title": "Bio",
+        "description": "Write a short introduction."
+      },
+      "portfolio": {
+        "title": "Projects",
+        "description": "Share some of your projects."
+      }
+    }
+  },
+
+  "Buttons": {
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+
+  "FileInput": {
+    "error": "Upload failed, try again.",
+    "strong": "Click to update a file",
+    "text": "or drag and drop",
+    "description": "SVG, PNG, JPG or GIF (max. 800x400px)",
+    "tryAgain": "Try again"
+  },
+
+  "Sidebar": {
+    "search": "Search",
+    "menu": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "projects": "Projects",
+      "tasks": "Tasks",
+      "reporting": "Reporting",
+      "users": "Users",
+      "support": "Support",
+      "settings": "Settings"
+    },
+    "usedSpace": {
+      "title": "Used space",
+      "description": "Your team used more than 80% of its available space. Need more?",
+      "dismiss": "Dismiss",
+      "upgrade": "Upgrade plan"
+    }
+  }
+}

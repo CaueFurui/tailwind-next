@@ -2,6 +2,7 @@ import { formatBytes } from '@/utils/format-bytes'
 import { CheckCircle2, Trash2, UploadCloud } from 'lucide-react'
 import { Button } from '@/components/Button'
 import { VariantProps, tv } from 'tailwind-variants'
+import { useTranslations } from 'next-intl'
 
 const fileItem = tv({
   slots: {
@@ -40,6 +41,7 @@ export interface FileItemProps extends VariantProps<typeof fileItem> {
 
 export function FileItem({ name, size, state }: FileItemProps) {
   const { container, icon, deleteButton } = fileItem({ state })
+  const t = useTranslations('FileInput')
 
   return (
     <div key={name} className={container()}>
@@ -50,19 +52,19 @@ export function FileItem({ name, size, state }: FileItemProps) {
       {state === 'error' ? (
         <div className="flex flex-1 flex-col items-start gap-1">
           <div className="flex flex-col">
-            <span className="text-error-700 dark:text-error-400 text-sm font-medium">
-              Upload failed, please try again.
+            <span className="text-sm font-medium text-error-700 dark:text-error-400">
+              {t('error')}
             </span>
-            <span className="text-error-600 dark:text-error-500 text-sm">
+            <span className="text-sm text-error-600 dark:text-error-500">
               {name}
             </span>
           </div>
 
           <button
             type="button"
-            className="text-error-700 hover:text-error-900 dark:text-error-400 dark:hover:text-error-300 text-sm font-semibold"
+            className="text-sm font-semibold text-error-700 hover:text-error-900 dark:text-error-400 dark:hover:text-error-300"
           >
-            Try again
+            {t('tryAgain')}
           </button>
         </div>
       ) : (

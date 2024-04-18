@@ -1,7 +1,12 @@
 'use client'
 
-import { SettingsTabs } from '@/components/SettingsTabs'
+import { Button } from '@/components/Button'
+import * as FileInput from '@/components/Form/FileInput'
+import { Select } from '@/components/Form/Select'
+import { SelectItem } from '@/components/Form/Select/SelectItem'
+import { TextArea } from '@/components/Form/TextArea'
 import * as Input from '@/components/Input'
+import { SettingsTabs } from '@/components/SettingsTabs'
 import {
   Bold,
   Italic,
@@ -12,21 +17,21 @@ import {
   Moon,
   Sun,
 } from 'lucide-react'
-import * as FileInput from '@/components/Form/FileInput'
-import { Select } from '@/components/Form/Select'
-import { SelectItem } from '@/components/Form/Select/SelectItem'
-import { TextArea } from '@/components/Form/TextArea'
-import { Button } from '@/components/Button'
+import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
+import { useRouter } from 'next/navigation'
 
 export default function Home() {
   const { setTheme } = useTheme()
+  const { push } = useRouter()
+  const tSettings = useTranslations('Settings')
+  const tButtons = useTranslations('Buttons')
 
   return (
     <>
       <div className="flex justify-between">
         <h1 className="text-3xl font-medium text-zinc-900 dark:text-zinc-100">
-          Settings
+          {tSettings('header.title')}
         </h1>
         <div className="flex gap-3">
           <Button variant="ghost" onClick={() => setTheme('light')}>
@@ -35,13 +40,13 @@ export default function Home() {
           <Button variant="ghost" onClick={() => setTheme('dark')}>
             <Moon />
           </Button>
-          <Button variant="ghost" onClick={() => console.log('sds')}>
+          <Button variant="ghost" onClick={() => push('/pt')}>
             <span className="text-3xl">🇧🇷</span>
           </Button>
-          <Button variant="ghost" onClick={() => console.log('sds')}>
+          <Button variant="ghost" onClick={() => {}}>
             <span className="text-3xl">🇪🇸</span>
           </Button>
-          <Button variant="ghost" onClick={() => console.log('sds')}>
+          <Button variant="ghost" onClick={() => push('/en')}>
             <span className="text-3xl">🇺🇸</span>
           </Button>
         </div>
@@ -50,21 +55,21 @@ export default function Home() {
 
       <div className="mt-6 flex flex-col">
         {/* Header */}
-        <div className="flex flex-col justify-between gap-4 border-b border-zinc-200 pb-5 lg:flex-row lg:items-center dark:border-zinc-700">
+        <div className="flex flex-col justify-between gap-4 border-b border-zinc-200 pb-5 dark:border-zinc-700 lg:flex-row lg:items-center">
           <div className="space-y-1">
             <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Personal Info
+              {tSettings('personalInfo.title')}
             </h2>
             <span className="text-sm text-zinc-500 dark:text-zinc-400">
-              Update your photo and personal details here.
+              {tSettings('personalInfo.description')}
             </span>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" type="button">
-              Cancel
+              {tButtons('cancel')}
             </Button>
             <Button type="submit" variant="primary" form="settings">
-              Save
+              {tButtons('save')}
             </Button>
           </div>
         </div>
@@ -79,7 +84,7 @@ export default function Home() {
               htmlFor="firstName"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Name
+              {tSettings('settingsForm.name')}
             </label>
             <div className="flex flex-col gap-3 lg:grid lg:grid-cols-form">
               <Input.Root>
@@ -91,7 +96,7 @@ export default function Home() {
                   htmlFor="lastName"
                   className="text-sm font-medium text-zinc-700 lg:sr-only"
                 >
-                  Last Name
+                  {tSettings('settingsForm.lastName')}
                 </label>
 
                 <Input.Root>
@@ -107,7 +112,7 @@ export default function Home() {
               htmlFor="email"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Email address
+              {tSettings('settingsForm.email')}
             </label>
             <Input.Root>
               <Input.Prefix>
@@ -127,9 +132,9 @@ export default function Home() {
               htmlFor="photo"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Your photo
+              {tSettings('settingsForm.photo.title')}
               <span className="mt-0.5 block text-sm font-normal text-zinc-500">
-                This will be displayed on your profile.
+                {tSettings('settingsForm.photo.description')}
               </span>
             </label>
             <FileInput.Root className="flex flex-col gap-5 lg:flex-row lg:items-start">
@@ -145,7 +150,7 @@ export default function Home() {
               htmlFor="role"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Role
+              {tSettings('settingsForm.role')}
             </label>
             <Input.Root>
               <Input.Control id="role" defaultValue="Developer" />
@@ -158,9 +163,9 @@ export default function Home() {
               htmlFor="country"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Country
+              {tSettings('settingsForm.country.title')}
             </label>
-            <Select placeholder="Select a country...">
+            <Select placeholder={tSettings('settingsForm.country.placeholder')}>
               <SelectItem value="br" text="Brazil" />
               <SelectItem value="us" text="United States" />
             </Select>
@@ -172,9 +177,11 @@ export default function Home() {
               htmlFor="timezone"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Timezone
+              {tSettings('settingsForm.timezone.title')}
             </label>
-            <Select placeholder="Select a timezone...">
+            <Select
+              placeholder={tSettings('settingsForm.timezone.placeholder')}
+            >
               <SelectItem
                 value="pst"
                 text="Pacific Standard Time (PST) UTC−08:00"
@@ -192,9 +199,9 @@ export default function Home() {
               htmlFor="bio"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Bio
+              {tSettings('settingsForm.bio.title')}
               <span className="mt-0.5 block text-sm font-normal text-zinc-500">
-                Write a short introduction.
+                {tSettings('settingsForm.bio.description')}
               </span>
             </label>
             <div className="space-y-3">
@@ -207,10 +214,10 @@ export default function Home() {
                 <div className="flex items-center gap-1">
                   <Button variant="ghost" type="button">
                     <Bold className="h-4 w-4 text-zinc-500" strokeWidth={3} />
-                  </Button>{' '}
+                  </Button>
                   <Button variant="ghost" type="button">
                     <Italic className="h-4 w-4 text-zinc-500" strokeWidth={3} />
-                  </Button>{' '}
+                  </Button>
                   <Button variant="ghost" type="button">
                     <Link className="h-4 w-4 text-zinc-500" strokeWidth={3} />
                   </Button>
@@ -238,9 +245,9 @@ export default function Home() {
               htmlFor="porfolio"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              Portfolio projects
+              {tSettings('settingsForm.portfolio.title')}
               <span className="mt-0.5 block text-sm font-normal text-zinc-500">
-                Share a few snippets of your work.
+                {tSettings('settingsForm.portfolio.description')}
               </span>
             </label>
             <FileInput.Root>
@@ -253,10 +260,10 @@ export default function Home() {
           {/* Buttons */}
           <div className="flex items-center justify-end gap-2 pt-5">
             <Button variant="outline" type="button">
-              Cancel
+              {tButtons('cancel')}
             </Button>
             <Button type="submit" variant="primary" form="settings">
-              Save
+              {tButtons('save')}
             </Button>
           </div>
         </form>

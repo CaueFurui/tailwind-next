@@ -19,10 +19,13 @@ import { UsedSpaceWidget } from './UsedSpaceWidget'
 import { Profile } from './Profile'
 import * as Input from '../Input'
 import { Button } from '../Button'
+import { useTranslations } from 'next-intl'
 
 export function Sidebar() {
+  const t = useTranslations('Sidebar')
+
   return (
-    <Collapsible.Root className="fixed left-0 right-0 top-0 z-20 flex flex-col gap-6 border-b border-zinc-200 bg-white p-4 data-[state=open]:bottom-0 lg:right-auto lg:w-80 lg:border-r lg:px-5 lg:py-8 lg:data-[state=closed]:bottom-0 dark:border-zinc-700 dark:bg-zinc-900">
+    <Collapsible.Root className="fixed left-0 right-0 top-0 z-20 flex flex-col gap-6 border-b border-zinc-200 bg-white p-4 data-[state=open]:bottom-0 dark:border-zinc-700 dark:bg-zinc-900 lg:right-auto lg:w-80 lg:border-r lg:px-5 lg:py-8 lg:data-[state=closed]:bottom-0">
       <div className="flex items-center justify-between">
         <Logo />
         <Collapsible.CollapsibleTrigger asChild className="lg:hidden">
@@ -40,22 +43,22 @@ export function Sidebar() {
           <Input.Prefix>
             <Search className="h-5 w-5 text-zinc-500" />
           </Input.Prefix>
-          <Input.Control placeholder="Search" />
+          <Input.Control placeholder={t('search')} />
         </Input.Root>
 
         <nav className="space-y-0.5">
-          <NavItem title="Home" icon={Home} />
-          <NavItem title="Dashboard" icon={BarChart} />
-          <NavItem title="Projects" icon={SquareStack} />
-          <NavItem title="Tasks" icon={CheckSquare} />
-          <NavItem title="Reporting" icon={Flag} />
-          <NavItem title="Users" icon={Users} />
+          <NavItem title={t('menu.home')} icon={Home} />
+          <NavItem title={t('menu.dashboard')} icon={BarChart} />
+          <NavItem title={t('menu.projects')} icon={SquareStack} />
+          <NavItem title={t('menu.tasks')} icon={CheckSquare} />
+          <NavItem title={t('menu.reporting')} icon={Flag} />
+          <NavItem title={t('menu.users')} icon={Users} />
         </nav>
 
         <div className="mt-auto flex flex-col gap-6">
           <nav className="space-y-0.5">
-            <NavItem title="Support" icon={LifeBuoy} />
-            <NavItem title="Settings" icon={Cog} />
+            <NavItem title={t('menu.support')} icon={LifeBuoy} />
+            <NavItem title={t('menu.settings')} icon={Cog} />
           </nav>
           <UsedSpaceWidget />
 

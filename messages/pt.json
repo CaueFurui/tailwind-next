@@ -1,0 +1,83 @@
+
+{
+  "Settings": {
+    "header": {
+      "title": "Configurações"
+    },
+    "personalInfo": {
+      "title": "Informação pessoal",
+      "description": "Atualize sua foto e informações pessoais aqui"
+    },
+    "tabs": {
+      "tab1": "Detalhes",
+      "tab2": "Perfil",
+      "tab3": "Senha",
+      "tab4": "Time",
+      "tab5": "Plano",
+      "tab6": "Cobranças",
+      "tab7": "Email",
+      "tab8": "Notificações",
+      "tab9": "Integrações",
+      "tab10": "API"
+    },
+    "settingsForm": {
+      "name": "Nome",
+      "lastName": "Sobrenome",
+      "email": "Email",
+      "photo": {
+        "title": "Sua foto",
+        "description": "Esta foto será mostrada no seu perfil."
+      },
+      "role": "Cargo",
+      "country": {
+        "title": "País",
+        "placeholder": "Selecione um país..."
+      },
+      "timezone": {
+        "title": "Timezone",
+        "placeholder": "Selecione uma timezone..."
+      },
+      "bio": {
+        "title": "Biografia",
+        "description": "Escreve uma breve introdução."
+      },
+      "portfolio": {
+        "title": "Projetos",
+        "description": "Compartilhe um pouco de seus projetos."
+      }
+    }
+  },
+
+  "Buttons": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "tryAgain": "Tente novamente"
+  },
+
+  "FileInput": {
+    "error": "Falha no upload, tente novamente.",
+    "strong": "Clique para selecionar arquivo",
+    "text": "ou arraste aqui",
+    "description": "SVG, PNG, JPG ou GIF (max. 800x400px)"
+  },
+
+  "Sidebar": {
+    "search": "Pesquisar",
+    "menu": {
+      "home": "Início",
+      "dashboard": "Dashboard",
+      "projects": "Projetos",
+      "tasks": "Tarefas",
+      "reporting": "Reportar",
+      "users": "Usuários",
+      "support": "Suporte",
+      "settings": "Configurações"
+    },
+    "usedSpace": {
+      "title": "Espaço usado",
+      "description": "Seu time usou mais de 80% do seu espaço disponível. Precisa de mais?",
+      "dismiss": "Recusar",
+      "upgrade": "Aumentar armazenamento"
+    }
+  }
+}

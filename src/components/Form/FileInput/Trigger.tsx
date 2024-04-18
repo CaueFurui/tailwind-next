@@ -2,9 +2,11 @@
 
 import { UploadCloud } from 'lucide-react'
 import { useFileInput } from './Root'
+import { useTranslations } from 'next-intl'
 
 export function Trigger() {
   const { id } = useFileInput()
+  const t = useTranslations('FileInput')
 
   return (
     <label
@@ -17,11 +19,11 @@ export function Trigger() {
       <div className="flex flex-col items-center gap-1">
         <span className="text-sm">
           <span className="font-semibold text-violet-700 dark:text-violet-300">
-            Click to upload
+            {t('strong')}
           </span>{' '}
-          or drag and drop
+          {t('text')}
         </span>
-        <span className="text-xs">SVG, PNG, JPG or GIF (max. 800x400px)</span>
+        <span className="text-xs">{t('description')}</span>
       </div>
     </label>
   )
