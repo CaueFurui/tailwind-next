@@ -1,16 +1,16 @@
 import { useTranslations } from 'next-intl'
 
 export function UsedSpaceWidget() {
-  const t = useTranslations('Sidebar.usedSpace')
+  const t = useTranslations()
 
   return (
     <div className="flex flex-col gap-4 rounded-lg bg-violet-50 px-4 py-5 dark:bg-zinc-800">
       <div className="space-y-1">
         <span className="text-sm/5 font-medium text-violet-700 dark:text-zinc-100">
-          {t('title')}
+          {t('WIDGET_ESPACO_USADO_TITULO')}
         </span>
         <p className="text-sm/5 text-violet-500 dark:text-zinc-400">
-          {t('description')}
+          {t('WIDGET_ESPACO_USADO_DESC')}
         </p>
       </div>
       <div className="h-2 rounded-full bg-violet-100 dark:bg-zinc-600">
@@ -21,13 +21,13 @@ export function UsedSpaceWidget() {
           type="button"
           className="text-sm font-medium text-violet-500 hover:text-violet-700 dark:text-violet-300 dark:hover:text-violet-200"
         >
-          {t('dismiss')}
+          {t('WIDGET_ESPACO_USADO_RECUSAR')}
         </button>
         <button
           type="button"
           className="text-sm font-medium text-violet-700 hover:text-violet-900 dark:text-zinc-300 dark:hover:text-zinc-100"
         >
-          {t('upgrade')}
+          {t('WIDGET_ESPACO_USADO_ATUALIZAR')}
         </button>
       </div>
     </div>

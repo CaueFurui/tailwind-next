@@ -7,6 +7,7 @@ import { SelectItem } from '@/components/Form/Select/SelectItem'
 import { TextArea } from '@/components/Form/TextArea'
 import * as Input from '@/components/Input'
 import { SettingsTabs } from '@/components/SettingsTabs'
+import { api } from '@/services'
 import {
   Bold,
   Italic,
@@ -17,21 +18,37 @@ import {
   Moon,
   Sun,
 } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+
+type tipoDeContaType = {
+  id: number
+  titulo: string
+}
 
 export default function Home() {
   const { setTheme } = useTheme()
+  const [tipoDeConta, setTipoDeConta] = useState<tipoDeContaType[]>([])
+  const locale = useLocale()
   const { push } = useRouter()
-  const tSettings = useTranslations('Settings')
-  const tButtons = useTranslations('Buttons')
+  const t = useTranslations()
+
+  useEffect(() => {
+    api.get<tipoDeContaType[]>(`/tipos_de_conta`).then((res) => {
+      const tipoDeContaTraduzido = res.data.map((item) => {
+        return { id: item.id, titulo: t(`BD_${item.titulo}`) }
+      })
+      setTipoDeConta(tipoDeContaTraduzido)
+    })
+  }, [locale])
 
   return (
     <>
       <div className="flex justify-between">
         <h1 className="text-3xl font-medium text-zinc-900 dark:text-zinc-100">
-          {tSettings('header.title')}
+          {t('CONFIGURACOES_CABECALHO_TITULO')}
         </h1>
         <div className="flex gap-3">
           <Button variant="ghost" onClick={() => setTheme('light')}>
@@ -58,18 +75,18 @@ export default function Home() {
         <div className="flex flex-col justify-between gap-4 border-b border-zinc-200 pb-5 dark:border-zinc-700 lg:flex-row lg:items-center">
           <div className="space-y-1">
             <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              {tSettings('personalInfo.title')}
+              {t('INFO_PESSOAIS_TITULO')}
             </h2>
             <span className="text-sm text-zinc-500 dark:text-zinc-400">
-              {tSettings('personalInfo.description')}
+              {t('INFO_PESSOAIS_DESC')}
             </span>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" type="button">
-              {tButtons('cancel')}
+              {t('BOTOES_CANCELAR')}
             </Button>
             <Button type="submit" variant="primary" form="settings">
-              {tButtons('save')}
+              {t('BOTOES_SALVAR')}
             </Button>
           </div>
         </div>
@@ -84,7 +101,7 @@ export default function Home() {
               htmlFor="firstName"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              {tSettings('settingsForm.name')}
+              {t('FORMULÁRIO_CONFIGURACOES_NOME')}
             </label>
             <div className="flex flex-col gap-3 lg:grid lg:grid-cols-form">
               <Input.Root>
@@ -96,7 +113,7 @@ export default function Home() {
                   htmlFor="lastName"
                   className="text-sm font-medium text-zinc-700 lg:sr-only"
                 >
-                  {tSettings('settingsForm.lastName')}
+                  {t('FORMULÁRIO_CONFIGURACOES_ULTIMO_NOME')}
                 </label>
 
                 <Input.Root>
@@ -112,7 +129,7 @@ export default function Home() {
               htmlFor="email"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              {tSettings('settingsForm.email')}
+              {t('FORMULÁRIO_CONFIGURACOES_EMAIL')}
             </label>
             <Input.Root>
               <Input.Prefix>
@@ -132,9 +149,9 @@ export default function Home() {
               htmlFor="photo"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              {tSettings('settingsForm.photo.title')}
+              {t('FORMULÁRIO_CONFIGURACOES_FOTO_TITULO')}
               <span className="mt-0.5 block text-sm font-normal text-zinc-500">
-                {tSettings('settingsForm.photo.description')}
+                {t('FORMULÁRIO_CONFIGURACOES_FOTO_DESC')}
               </span>
             </label>
             <FileInput.Root className="flex flex-col gap-5 lg:flex-row lg:items-start">
@@ -150,7 +167,7 @@ export default function Home() {
               htmlFor="role"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              {tSettings('settingsForm.role')}
+              {t('FORMULÁRIO_CONFIGURACOES_CARGO')}
             </label>
             <Input.Root>
               <Input.Control id="role" defaultValue="Developer" />
@@ -163,33 +180,36 @@ export default function Home() {
               htmlFor="country"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              {tSettings('settingsForm.country.title')}
+              {t('FORMULÁRIO_CONFIGURACOES_PAIS_TITULO')}
             </label>
-            <Select placeholder={tSettings('settingsForm.country.placeholder')}>
+            <Select
+              placeholder={t('FORMULÁRIO_CONFIGURACOES_PAIS_PLACEHOLDER')}
+            >
               <SelectItem value="br" text="Brazil" />
               <SelectItem value="us" text="United States" />
             </Select>
           </div>
 
-          {/* Timezone */}
+          {/* Account type */}
           <div className="flex flex-col gap-3 pt-5 lg:grid lg:grid-cols-form">
             <label
-              htmlFor="timezone"
+              htmlFor="accountType"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              {tSettings('settingsForm.timezone.title')}
+              {t('FORMULÁRIO_CONFIGURACOES_TIPO_DE_CONTA_TITULO')}
             </label>
             <Select
-              placeholder={tSettings('settingsForm.timezone.placeholder')}
+              placeholder={t(
+                'FORMULÁRIO_CONFIGURACOES_TIPO_DE_CONTA_PLACEHOLDER',
+              )}
             >
-              <SelectItem
-                value="pst"
-                text="Pacific Standard Time (PST) UTC−08:00"
-              />
-              <SelectItem
-                value="america/sao-paulo"
-                text="America/Sao Paulo UTC-03:00"
-              />
+              {tipoDeConta.map((tipo) => (
+                <SelectItem
+                  key={tipo.id}
+                  value={tipo.titulo}
+                  text={tipo.titulo}
+                />
+              ))}
             </Select>
           </div>
 
@@ -199,9 +219,9 @@ export default function Home() {
               htmlFor="bio"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              {tSettings('settingsForm.bio.title')}
+              {t('FORMULÁRIO_CONFIGURACOES_BIO_TITULO')}
               <span className="mt-0.5 block text-sm font-normal text-zinc-500">
-                {tSettings('settingsForm.bio.description')}
+                {t('FORMULÁRIO_CONFIGURACOES_BIO_DESC')}
               </span>
             </label>
             <div className="space-y-3">
@@ -245,9 +265,9 @@ export default function Home() {
               htmlFor="porfolio"
               className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
             >
-              {tSettings('settingsForm.portfolio.title')}
+              {t('FORMULÁRIO_CONFIGURACOES_PORTFOLIO_TITULO')}
               <span className="mt-0.5 block text-sm font-normal text-zinc-500">
-                {tSettings('settingsForm.portfolio.description')}
+                {t('FORMULÁRIO_CONFIGURACOES_PORTFOLIO_DESC')}
               </span>
             </label>
             <FileInput.Root>
@@ -260,10 +280,10 @@ export default function Home() {
           {/* Buttons */}
           <div className="flex items-center justify-end gap-2 pt-5">
             <Button variant="outline" type="button">
-              {tButtons('cancel')}
+              {t('BOTOES_CANCELAR')}
             </Button>
             <Button type="submit" variant="primary" form="settings">
-              {tButtons('save')}
+              {t('BOTOES_SALVAR')}
             </Button>
           </div>
         </form>

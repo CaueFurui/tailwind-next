@@ -1,40 +1,21 @@
 {
-  "en":
+  "tipos_de_conta":
     [
-      {"id": 1, "title": "CHECKINGACCOUNT"},
-      {"id": 2, "title": "ACCOUNTANT"},
-      {"id": 3, "title": "CONTACORRENTEORGAOSPUBLICOSESTADUAIS"},
-      {"id": 4, "title": "CONTACORRENTEORGAOSPUBLICOSMUNICIPAIS"},
-      {"id": 5, "title": "CONTACORRENTECIASDESEGURO"},
-      {"id": 6, "title": "CONTAPOUPANCA"},
-      {"id": 7, "title": "CONTADEPOSITOJUDICIALDEPOSITOEMCONSIGNACAOINDIV"},
-      {"id": 8, "title": "CONTADEPOSITOJUDICIALDEPOSITOEMCONSIGNACAOCONJU"},
-      {"id": 9, "title": "CONTACORRENTECONJUNTA"},
-      {"id": 10, "title": "CONTAPOUPANCACONJUNTA"},
-      {"id": 11, "title": "CONTAINVESTIMENTO"},
-      {"id": 12, "title": "CONTACOBRANCA"},
-      {"id": 13, "title": "CONTAPAGAMENTO"},
-      {"id": 14, "title": "CONTAMOVIMENTACAO"},
-      {"id": 15, "title": "CONTACONCILIACAO"},
-      {"id": 16, "title": "CONTAVINCULADA"}
-  ],
-  "pt":
-    [
-      {"id": 1, "title": "CHECKINGACCOUNT"},
-      {"id": 2, "title": "ACCOUNTANT"},
-      {"id": 3, "title": "CONTACORRENTEORGAOSPUBLICOSESTADUAIS"},
-      {"id": 4, "title": "CONTACORRENTEORGAOSPUBLICOSMUNICIPAIS"},
-      {"id": 5, "title": "CONTACORRENTECIASDESEGURO"},
-      {"id": 6, "title": "CONTAPOUPANCA"},
-      {"id": 7, "title": "CONTADEPOSITOJUDICIALDEPOSITOEMCONSIGNACAOINDIV"},
-      {"id": 8, "title": "CONTADEPOSITOJUDICIALDEPOSITOEMCONSIGNACAOCONJU"},
-      {"id": 9, "title": "CONTACORRENTECONJUNTA"},
-      {"id": 10, "title": "CONTAPOUPANCACONJUNTA"},
-      {"id": 11, "title": "CONTAINVESTIMENTO"},
-      {"id": 12, "title": "CONTACOBRANCA"},
-      {"id": 13, "title": "CONTAPAGAMENTO"},
-      {"id": 14, "title": "CONTAMOVIMENTACAO"},
-      {"id": 15, "title": "CONTACONCILIACAO"},
-      {"id": 16, "title": "CONTAVINCULADA"}
+      {"id": 1, "titulo": "CONTACORRENTE"},
+      {"id": 2, "titulo": "CONTASALARIO"},
+      {"id": 3, "titulo": "CONTACORRENTEORGAOSPUBLICOSESTADUAIS"},
+      {"id": 4, "titulo": "CONTACORRENTEORGAOSPUBLICOSMUNICIPAIS"},
+      {"id": 5, "titulo": "CONTACORRENTECIASDESEGURO"},
+      {"id": 6, "titulo": "CONTAPOUPANCA"},
+      {"id": 7, "titulo": "CONTADEPOSITOJUDICIALDEPOSITOEMCONSIGNACAOINDIV"},
+      {"id": 8, "titulo": "CONTADEPOSITOJUDICIALDEPOSITOEMCONSIGNACAOCONJU"},
+      {"id": 9, "titulo": "CONTACORRENTECONJUNTA"},
+      {"id": 10, "titulo": "CONTAPOUPANCACONJUNTA"},
+      {"id": 11, "titulo": "CONTAINVESTIMENTO"},
+      {"id": 12, "titulo": "CONTACOBRANCA"},
+      {"id": 13, "titulo": "CONTAPAGAMENTO"},
+      {"id": 14, "titulo": "CONTAMOVIMENTACAO"},
+      {"id": 15, "titulo": "CONTACONCILIACAO"},
+      {"id": 16, "titulo": "CONTAVINCULADA"}
     ]
 }

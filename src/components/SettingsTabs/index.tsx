@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl'
 
 export function SettingsTabs() {
   const [currentTab, setCurrentTab] = useState('tab1')
-  const t = useTranslations('Settings')
+  const t = useTranslations()
 
   return (
     <Tabs.Root value={currentTab} onValueChange={setCurrentTab}>
@@ -17,52 +17,52 @@ export function SettingsTabs() {
           <Tabs.List className="mt-6 flex w-full items-center gap-4 border-b border-zinc-200 dark:border-zinc-700">
             <TabItem
               value="Tab1"
-              title={t('tabs.tab1')}
+              title={t('ABAS_ABA1')}
               isSelected={currentTab === 'Tab1'}
             />
             <TabItem
               value="Tab2"
-              title={t('tabs.tab2')}
+              title={t('ABAS_ABA2')}
               isSelected={currentTab === 'Tab2'}
             />
             <TabItem
               value="Tab3"
-              title={t('tabs.tab3')}
+              title={t('ABAS_ABA3')}
               isSelected={currentTab === 'Tab3'}
             />
             <TabItem
               value="Tab4"
-              title={t('tabs.tab4')}
+              title={t('ABAS_ABA4')}
               isSelected={currentTab === 'Tab4'}
             />
             <TabItem
               value="Tab5"
-              title={t('tabs.tab5')}
+              title={t('ABAS_ABA5')}
               isSelected={currentTab === 'Tab5'}
             />
             <TabItem
               value="Tab6"
-              title={t('tabs.tab6')}
+              title={t('ABAS_ABA6')}
               isSelected={currentTab === 'Tab6'}
             />
             <TabItem
               value="Tab7"
-              title={t('tabs.tab7')}
+              title={t('ABAS_ABA7')}
               isSelected={currentTab === 'Tab7'}
             />
             <TabItem
               value="Tab8"
-              title={t('tabs.tab8')}
+              title={t('ABAS_ABA8')}
               isSelected={currentTab === 'Tab8'}
             />
             <TabItem
               value="Tab9"
-              title={t('tabs.tab9')}
+              title={t('ABAS_ABA9')}
               isSelected={currentTab === 'Tab9'}
             />
             <TabItem
               value="Tab10"
-              title={t('tabs.tab10')}
+              title={t('ABAS_ABA10')}
               isSelected={currentTab === 'Tab10'}
             />
           </Tabs.List>

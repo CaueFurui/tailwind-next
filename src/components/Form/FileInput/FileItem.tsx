@@ -41,7 +41,7 @@ export interface FileItemProps extends VariantProps<typeof fileItem> {
 
 export function FileItem({ name, size, state }: FileItemProps) {
   const { container, icon, deleteButton } = fileItem({ state })
-  const t = useTranslations('FileInput')
+  const t = useTranslations()
 
   return (
     <div key={name} className={container()}>
@@ -53,7 +53,7 @@ export function FileItem({ name, size, state }: FileItemProps) {
         <div className="flex flex-1 flex-col items-start gap-1">
           <div className="flex flex-col">
             <span className="text-sm font-medium text-error-700 dark:text-error-400">
-              {t('error')}
+              {t('INPUT_DE_ARQUIVOS_ERRO')}
             </span>
             <span className="text-sm text-error-600 dark:text-error-500">
               {name}
@@ -64,7 +64,7 @@ export function FileItem({ name, size, state }: FileItemProps) {
             type="button"
             className="text-sm font-semibold text-error-700 hover:text-error-900 dark:text-error-400 dark:hover:text-error-300"
           >
-            {t('tryAgain')}
+            {t('BOTOES_TENTAR_NOVAMENTE')}
           </button>
         </div>
       ) : (

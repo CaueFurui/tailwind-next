@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 
 export function Trigger() {
   const { id } = useFileInput()
-  const t = useTranslations('FileInput')
+  const t = useTranslations()
 
   return (
     <label
@@ -19,11 +19,11 @@ export function Trigger() {
       <div className="flex flex-col items-center gap-1">
         <span className="text-sm">
           <span className="font-semibold text-violet-700 dark:text-violet-300">
-            {t('strong')}
+            {t('INPUT_DE_ARQUIVOS_NEGRITO')}
           </span>{' '}
-          {t('text')}
+          {t('INPUT_DE_ARQUIVOS_TEXTO')}
         </span>
-        <span className="text-xs">{t('description')}</span>
+        <span className="text-xs">{t('INPUT_DE_ARQUIVOS_DESC')}</span>
       </div>
     </label>
   )
