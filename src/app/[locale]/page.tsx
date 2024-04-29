@@ -22,6 +22,8 @@ import { useLocale, useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+// @ts-expect-error modulo criado pelo usuário
+import { traduzirArray } from 'module-translations'
 
 type tipoDeContaType = {
   id: number
@@ -42,6 +44,8 @@ export default function Home() {
       })
       setTipoDeConta(tipoDeContaTraduzido)
     })
+
+    traduzirArray('pt')
   }, [locale])
 
   return (
