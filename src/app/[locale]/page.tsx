@@ -32,20 +32,19 @@ type tipoDeContaType = {
 
 export default function Home() {
   const { setTheme } = useTheme()
-  const [tipoDeConta, setTipoDeConta] = useState<tipoDeContaType[]>([])
+  const [tipoDeConta, setTipoDeConta] = useState<string[]>([])
   const locale = useLocale()
   const { push } = useRouter()
   const t = useTranslations()
 
   useEffect(() => {
     api.get<tipoDeContaType[]>(`/tipos_de_conta`).then((res) => {
-      const tipoDeContaTraduzido = res.data.map((item) => {
-        return { id: item.id, titulo: t(`BD_${item.titulo}`) }
+      const arr = res.data.map((item) => {
+        return `BD_${item.titulo}`
       })
+      const tipoDeContaTraduzido = traduzirArray(locale, arr)
       setTipoDeConta(tipoDeContaTraduzido)
     })
-
-    traduzirArray('pt')
   }, [locale])
 
   return (
@@ -209,9 +208,9 @@ export default function Home() {
             >
               {tipoDeConta.map((tipo) => (
                 <SelectItem
-                  key={tipo.id}
-                  value={tipo.titulo}
-                  text={tipo.titulo}
+                  key={tipo}
+                  value={tipo}
+                  text={tipo}
                 />
               ))}
             </Select>
