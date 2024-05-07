@@ -22,8 +22,8 @@ import { useLocale, useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-// @ts-expect-error modulo criado pelo usuário
-import { traduzirArray } from 'module-translations'
+// @ts-expect-error modulo criado pelo user
+import { traduzirLista } from 'module-translations'
 
 type tipoDeContaType = {
   id: number
@@ -42,7 +42,7 @@ export default function Home() {
       const arr = res.data.map((item) => {
         return `BD_${item.titulo}`
       })
-      const tipoDeContaTraduzido = traduzirArray(locale, arr)
+      const tipoDeContaTraduzido = traduzirLista(arr)
       setTipoDeConta(tipoDeContaTraduzido)
     })
   }, [locale])
@@ -207,11 +207,7 @@ export default function Home() {
               )}
             >
               {tipoDeConta.map((tipo) => (
-                <SelectItem
-                  key={tipo}
-                  value={tipo}
-                  text={tipo}
-                />
+                <SelectItem key={tipo} value={tipo} text={tipo} />
               ))}
             </Select>
           </div>

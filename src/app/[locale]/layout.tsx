@@ -2,8 +2,12 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../globals.css'
 import { Sidebar } from '@/components/Sidebar'
+import enData from '../../../messages/en.json'
+import ptData from '../../../messages/pt.json'
 import { ThemeProvider } from 'next-themes'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
+// @ts-expect-error modulo criado pelo user
+import { selecionarArquivo } from 'module-translations'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +24,12 @@ export default function LocaleLayout({
   params: { locale: string }
 }) {
   const messages = useMessages()
+
+  if (locale === 'pt') {
+    selecionarArquivo(ptData)
+  } else {
+    selecionarArquivo(enData)
+  }
 
   return (
     <html lang={locale} className="antialiased">
